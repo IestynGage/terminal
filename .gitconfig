@@ -1,0 +1,13 @@
+[alias]
+		# Lists the branches in most recent order, with commit message and username
+		#
+		# Example output:
+		# *example            24 hours ago  A commit message		                                username
+ 		# main                31 hours ago  A commit message                                    username
+ 		# example-2           31 hours ago  A commit message                                    username
+    #
+		# Usage
+		# 	git recent
+		recent = "!r() { count=$1; git for-each-ref --sort=-committerdate refs/heads --format='%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' --color=always --count=${count:=10} | column -ts'|';}; r"
+		
+		history = "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
