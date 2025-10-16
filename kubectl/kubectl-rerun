@@ -15,6 +15,10 @@ EOM
     exit 1
 }
 
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+  usage
+fi
+
 kubectl get job $1 -o yaml > "$1.yaml"
 kubectl delete job $1
 kubectl apply -f $1.yaml
